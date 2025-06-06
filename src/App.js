@@ -46,8 +46,8 @@ function App() {
     getCountriesData();
   }, []);
 
-  const onCountryChange = async (e) => {
-    const countryCode = e.target.value;
+  const onCountryChange = async (value) => {
+    const countryCode = value;
     setCountry(countryCode);
 
     const url =
@@ -79,7 +79,9 @@ function App() {
           >
             <Select.Option value="worldwide">Worldwide</Select.Option>
             {countries.map((country) => (
-              <Select.Option value={country.value}>{country.name}</Select.Option>
+              <Select.Option key={country.value} value={country.value}>
+                {country.name}
+              </Select.Option>
             ))}
           </Select>
         </div>
