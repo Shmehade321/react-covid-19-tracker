@@ -1,6 +1,6 @@
 import React from "react";
 import "./InfoBox.css";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, Typography } from "antd";
 
 function InfoBox({ title, cases, isRed, active, total, ...props }) {
   return (
@@ -10,19 +10,17 @@ function InfoBox({ title, cases, isRed, active, total, ...props }) {
       }`}
       onClick={props.onClick}
     >
-      <CardContent>
-        <Typography className="infoBox__title" color="textSecondary">
-          {title}
-        </Typography>
+      <Typography.Text className="infoBox__title" type="secondary">
+        {title}
+      </Typography.Text>
 
-        <h2 className={`infoBox__cases ${!isRed && "infoBox__cases--green"}`}>
-          {cases}
-        </h2>
+      <h2 className={`infoBox__cases ${!isRed && "infoBox__cases--green"}`}>
+        {cases}
+      </h2>
 
-        <Typography className="infoBox__total" color="textSecondary">
-          {total} Total
-        </Typography>
-      </CardContent>
+      <Typography.Text className="infoBox__total" type="secondary">
+        {total} Total
+      </Typography.Text>
     </Card>
   );
 }
