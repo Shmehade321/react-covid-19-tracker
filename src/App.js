@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import {
-  FormControl,
-  Select,
-  MenuItem,
-  Card,
-  CardContent,
-} from "@material-ui/core";
+import { Select, Card } from "antd";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
@@ -78,18 +72,16 @@ function App() {
       <div className="app__left">
         <div className="app__header">
           <h1>COVID-19 TRACKER</h1>
-          <FormControl className="app__dropdown">
-            <Select
-              variant="outlined"
-              onChange={onCountryChange}
-              value={country}
-            >
-              <MenuItem value="worldwide">Worldwide</MenuItem>
-              {countries.map((country) => (
-                <MenuItem value={country.value}>{country.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <Select
+            className="app__dropdown"
+            onChange={onCountryChange}
+            value={country}
+          >
+            <Select.Option value="worldwide">Worldwide</Select.Option>
+            {countries.map((country) => (
+              <Select.Option value={country.value}>{country.name}</Select.Option>
+            ))}
+          </Select>
         </div>
 
         <div className="app_stats">
@@ -129,13 +121,11 @@ function App() {
       </div>
 
       <Card className="app__right">
-        <CardContent>
-          <h3>Live Cases By Country</h3>
-          <Table countries={tableData} />
+        <h3>Live Cases By Country</h3>
+        <Table countries={tableData} />
 
-          <h3 className="app__graphTitle">Worldwide New {casesType}</h3>
-          <LineGraph className="app__graph" casesType={casesType} />
-        </CardContent>
+        <h3 className="app__graphTitle">Worldwide New {casesType}</h3>
+        <LineGraph className="app__graph" casesType={casesType} />
       </Card>
     </div>
   );
